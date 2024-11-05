@@ -4,6 +4,7 @@ on:
   push:
     branches: [master]
 
+# CI
 jobs:
   build_and_test:
     runs-on: self-hosted
@@ -22,3 +23,15 @@ jobs:
 
       - name: Run tests
         run: pytest
+
+# CD
+jobs:
+  build_and_run_docker:
+    runs-on: self-hosted
+    steps:
+      - name: Docker build operations
+        uses: docker build -t blogapp .
+
+      - name: Docker run
+        uses: docker run -d -p 8000:8282 blogapp
+
