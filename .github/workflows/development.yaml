@@ -22,6 +22,3 @@ jobs:
 
       - name: Run tests
         run: pytest
-
-      - name: Run application
-        run: uvicorn main:app --workers=4 --host=0.0.0.0 --port=8855
