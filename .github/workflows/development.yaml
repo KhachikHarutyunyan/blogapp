@@ -29,8 +29,8 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Docker build operations
-        uses: docker build -t blogapp .
+        run: docker build -t blogapp .
 
       - name: Docker run
-        uses: docker run -d -p 8000:8282 blogapp
+        run: docker run -d -p 8000:8282 blogapp
 
