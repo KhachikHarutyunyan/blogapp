@@ -5,7 +5,6 @@ on:
     branches: [master]
 
 # CI
-jobs:
   build_and_test:
     runs-on: self-hosted
     steps:
