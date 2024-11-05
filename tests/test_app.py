@@ -14,5 +14,5 @@ def test_client():
 
 def test_greating(test_client: TestClient):
     response = test_client.get("/")
-    print(response.status_code)
-
+    
+    assert response.status_code == 200
