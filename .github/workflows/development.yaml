@@ -67,7 +67,7 @@ jobs:
       - name: Set env as secret
         env:
           FOLDER_PATH: ${{ secrets.FOLDER_PATH }}
-        run: echo ">>> ${{ FOLDER_PATH }}"
+        run: echo ">>> ${{ env.FOLDER_PATH }}"
       # - name: Clean Filesystem
       #   # run: rm -rf ${{ secrets.FOLDER_PATH }}/
       #   run: echo ">>> ${{ vars.FOLDER_PATH }}"
