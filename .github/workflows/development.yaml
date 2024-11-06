@@ -68,5 +68,5 @@ jobs:
             echo "CHECK VARS" $TEST_VAR "or" ${{env.TEST_VAR}}
             echo "GIT" ${{ secrets.GITHUB_TOKEN }}
             echo "CHECK GT" $TEST_GT "or" ${{env.TEST_GT}}
-    - name: Clean workdir
+      - name: Clean workdir
         run: rm -rf ${{env.RUNNER_PATH}}
