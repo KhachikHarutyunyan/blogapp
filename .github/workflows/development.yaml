@@ -28,9 +28,6 @@ jobs:
   build_and_run_docker:
     runs-on: self-hosted
     steps:
-      - shell: bash
-        env:
-          FOLDER_SECRET: ${{ secrets.FOLDER_PATH }}
       - name: Build and Run
         run: |
             if [[ -n $( docker images -q blogapp:latest ) ]]; then
@@ -70,4 +67,4 @@ jobs:
       
       - name: Clean Filesystem
         # run: rm -rf ${{ secrets.FOLDER_PATH }}/
-        run: echo ${{ FOLDER_SECRET }}
+        run: echo ${{ vars.FOLDER_PATH }}
