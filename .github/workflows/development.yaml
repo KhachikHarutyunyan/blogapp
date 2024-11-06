@@ -32,6 +32,7 @@ jobs:
         env:
           FOLDER_PATH: ${{ secrets.FOLDER_PATH }}
           RUNNER_PATH: ${{ vars.RUNNER_PATH }}
+          TEST: OOOOOOOOOOOPPPPPPPPPP
       # - name: Build and Run
         run: |
             if [[ -n $( docker images -q blogapp:latest ) ]]; then
@@ -69,10 +70,10 @@ jobs:
       # - name: Docker run
       #   run: docker run -d --name blog_api -p 8000:8282 blogapp
       - name: Set env as secret
-        run: echo ${{FOLDER_PATH}} ${{RUNNER_PATH}}
+        run: echo ${{env.FOLDER_PATH}} ${{env.RUNNER_PATH}} ${{env.TEST}}
 
       - name: Test run
-        run: echo "$FOLDER_PATH" "$RUNNER_PATH"
+        run: echo "$FOLDER_PATH" "$RUNNER_PATH" "$TEST"
         
       # - name: Clean Filesystem
       #   # run: rm -rf ${{ secrets.FOLDER_PATH }}/
