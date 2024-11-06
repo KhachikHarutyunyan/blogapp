@@ -32,7 +32,7 @@ jobs:
         env:
           FOLDER_PATH: ${{ secrets.FOLDER_PATH }}
           RUNNER_PATH: ${{ vars.RUNNER_PATH }}
-      - name: Build and Run
+      # - name: Build and Run
         run: |
             if [[ -n $( docker images -q blogapp:latest ) ]]; then
               echo 'Container BlogAPP image exists'
