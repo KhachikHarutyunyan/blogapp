@@ -26,11 +26,12 @@ jobs:
 
 # CD
   build_and_run_docker:
-    env:
-      FOLDER_PATH: ${{ secrets.FOLDER_PATH }}
-      RUNNER_PATH: ${{ vars.RUNNER_PATH }}
     runs-on: self-hosted
     steps:
+      - shell: bash
+        env:
+          FOLDER_PATH: ${{ secrets.FOLDER_PATH }}
+          RUNNER_PATH: ${{ vars.RUNNER_PATH }}
       - name: Build and Run
         run: |
             if [[ -n $( docker images -q blogapp:latest ) ]]; then
@@ -69,7 +70,7 @@ jobs:
       #   run: docker run -d --name blog_api -p 8000:8282 blogapp
       - name: Set env as secret
         run: echo $FOLDER_PATH $RUNNER_PATH
-        shell: bash
+        
       # - name: Clean Filesystem
       #   # run: rm -rf ${{ secrets.FOLDER_PATH }}/
       #   run: echo ">>> ${{ vars.FOLDER_PATH }}"
