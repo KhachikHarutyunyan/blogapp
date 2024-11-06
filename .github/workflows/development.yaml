@@ -43,16 +43,18 @@ jobs:
                 if $(docker inspect -f '{{.State.Status}}' "blog_api" | grep -q "running"); then
                     echo "The container blog_api is running. START STOPING OPERATION"
                     docker stop blog_api
-                    echo "The container blog_api START DELETING"
-                    docker rm blog_api
-                    echo "The container blog_api DELETED"
-
-                    # Deleting old image
-                    echo "The old image 'blogapp' START DELETING"
-                    docker rmi blogapp
-                    echo "The Image 'blogapp' DELETED"
                 fi
+
+                echo "The container blog_api START DELETING"
+                docker rm blog_api
+                echo "The container blog_api DELETED"
+              
               fi
+
+              # Deleting old image
+              echo "The old image 'blogapp' START DELETING"
+              docker rmi blogapp
+              echo "The Image 'blogapp' DELETED"
               
             fi
 
