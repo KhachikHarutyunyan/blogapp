@@ -28,12 +28,12 @@ jobs:
   build_and_run_docker:
     runs-on: self-hosted
     steps:
-      - shell: bash
-        env:
-          FOLDER_PATH: ${{ secrets.FOLDER_PATH }}
-          RUNNER_PATH: ${{ vars.RUNNER_PATH }}
-          TEST: OOOOOOOOOOOPPPPPPPPPP
-      # - name: Build and Run
+      # - shell: bash
+      #   env:
+      #     FOLDER_PATH: ${{ secrets.FOLDER_PATH }}
+      #     RUNNER_PATH: ${{ vars.RUNNER_PATH }}
+      #     TEST: OOOOOOOOOOOPPPPPPPPPP
+      - name: Build and Run
         run: |
             if [[ -n $( docker images -q blogapp:latest ) ]]; then
               echo 'Container BlogAPP image exists'
@@ -69,12 +69,18 @@ jobs:
 
       # - name: Docker run
       #   run: docker run -d --name blog_api -p 8000:8282 blogapp
-      - name: Set env as secret
-        run: echo ${{env.FOLDER_PATH}} ${{env.RUNNER_PATH}} ${{env.TEST}}
+      # - name: Set env as secret
+      #   run: echo ${{env.FOLDER_PATH}} ${{env.RUNNER_PATH}} ${{env.TEST}}
 
-      - name: Test run
-        run: echo "$FOLDER_PATH" "$RUNNER_PATH" "$TEST"
+      # - name: Test run
+      #   run: echo "$FOLDER_PATH" "$RUNNER_PATH" "$TEST"
         
       # - name: Clean Filesystem
       #   # run: rm -rf ${{ secrets.FOLDER_PATH }}/
       #   run: echo ">>> ${{ vars.FOLDER_PATH }}"
+    steps:
+    - shell: bash
+      env:
+        SUPER_SECRET: 456
+      run: |
+        echo "$SUPER_SECRET"
