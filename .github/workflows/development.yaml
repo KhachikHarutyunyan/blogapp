@@ -87,4 +87,4 @@ jobs:
           FOLDER_PATH: ${{ secrets.FOLDER_PATH }}
           RUNNER_PATH: ${{ vars.RUNNER_PATH }}
         run: |
-          echo "$SUPER_SECRET" "$FOLDER_PATH" "$RUNNER_PATH"
+          echo "$SUPER_SECRET" "$FOLDER_PATH" "$RUNNER_PATH" "${{env.FOLDER_PATH}}" "${{env.RUNNER_PATH}}"
