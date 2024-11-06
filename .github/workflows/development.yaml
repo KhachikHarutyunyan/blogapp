@@ -28,7 +28,7 @@ jobs:
   build_and_run_docker:
     runs-on: self-hosted
     steps:
-      - name: Check Image already exist
+      - name: Build and Run
         run: |
             if [[ -n $( docker images -q blogapp:latest ) ]]; then
               echo 'Container BlogAPP image exists'
