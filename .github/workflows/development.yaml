@@ -32,7 +32,7 @@ jobs:
         run: docker build -t blogapp .
 
       - name: Docker run
-        run: docker run -d -p 8000:8282 blogapp
+        run: docker run -d --name blog_api -p 8000:8282 blogapp
       
       - name: Clean Filesystem
         run: rm -rf ${{env.BLOGAPP_PATH}}/blogapp
