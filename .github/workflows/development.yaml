@@ -27,6 +27,7 @@ jobs:
 # CD
   build_and_run_docker:
     runs-on: self-hosted
+    
     env:
       TEST: ${{ secrets.FOLDER_PATH }}
     steps:
