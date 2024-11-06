@@ -29,10 +29,7 @@ jobs:
     needs: build_and_test
     runs-on: self-hosted
     env:
-      TEST: ${{ secrets.TEST_SECRET }}
       RUNNER_PATH: ${{ secrets.RUNNER_PATH }}
-      TEST_VAR: ${{ vars.RUNNER_PATH }}
-      TEST_GT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Build and Run
         run: |
@@ -71,5 +68,5 @@ jobs:
             echo "CHECK VARS" $TEST_VAR "or" ${{env.TEST_VAR}}
             echo "GIT" ${{ secrets.GITHUB_TOKEN }}
             echo "CHECK GT" $TEST_GT "or" ${{env.TEST_GT}}
-
-            rm -rf ${{env.RUNNER_PATH}}
+    - name: Clean workdir
+        run: rm -rf ${{env.RUNNER_PATH}}
