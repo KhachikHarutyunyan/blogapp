@@ -62,7 +62,7 @@ jobs:
             echo "Start running container 'blog_api'"
             docker run -d --name blog_api -p 8000:8282 blogapp
 
-      - name: Clean Filesystem
+      # - name: Clean Filesystem
         run: echo $FOLDER_PATH
 
       # - name: Docker build operations
