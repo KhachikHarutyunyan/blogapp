@@ -23,19 +23,11 @@ jobs:
 
       - name: Run tests
         run: pytest
-        
-      - name: Clean folder
-        run: rm -rf /home/dev/actions-runner/_work/blogapp
 
 # CD
   build_and_run_docker:
     runs-on: self-hosted
     steps:
-      # - shell: bash
-      #   env:
-      #     FOLDER_PATH: ${{ secrets.FOLDER_PATH }}
-      #     RUNNER_PATH: ${{ vars.RUNNER_PATH }}
-      #     TEST: OOOOOOOOOOOPPPPPPPPPP
       - name: Build and Run
         run: |
             if [[ -n $( docker images -q blogapp:latest ) ]]; then
@@ -66,27 +58,3 @@ jobs:
             docker build -t blogapp .
             echo "Start running container 'blog_api'"
             docker run -d --name blog_api -p 8000:8282 blogapp
-
-      - name: Clean folder
-        run: rm -rf /home/dev/actions-runner/_work/blogapp
-
-      # - name: Docker run
-      #   run: docker run -d --name blog_api -p 8000:8282 blogapp
-      # - name: Set env as secret
-      #   run: echo ${{env.FOLDER_PATH}} ${{env.RUNNER_PATH}} ${{env.TEST}}
-
-      # - name: Test run
-      #   run: echo "$FOLDER_PATH" "$RUNNER_PATH" "$TEST"
-        
-      # - name: Clean Filesystem
-      #   # run: rm -rf ${{ secrets.FOLDER_PATH }}/
-      #   run: echo ">>> ${{ vars.FOLDER_PATH }}"
-  # test_env:
-  #   runs-on: self-hosted
-  #   steps:
-  #     - shell: bash
-  #       env:
-  #         FOLDER_PATH: /home/dev/actions-runner/_work/blogapp
-  #       run: |
-  #         echo "$FOLDER_PATH" "$RUNNER_PATH" "${{env.FOLDER_PATH}}" "${{env.RUNNER_PATH}}"
-  #         rm -rf $FOLDER_PATH
