@@ -81,6 +81,9 @@ jobs:
   test_env:
     runs-on: self-hosted
     steps:
+      secrets: inherit
+      with:
+        environment: staging
       - shell: bash
         env:
           SUPER_SECRET: 456
