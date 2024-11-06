@@ -66,4 +66,3 @@ jobs:
             docker run -d --name blog_api -p 8000:8282 blogapp
 
             echo "CHECK VARS" $TEST_VAR "or" ${{env.TEST_VAR}}
-      
