@@ -31,6 +31,7 @@ jobs:
     env:
       TEST: ${{ secrets.FOLDER_PATH }}
       TEST_VAR: ${{ vars.RUNNER_PATH }}
+      TEST_GT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Build and Run
         run: |
@@ -66,3 +67,5 @@ jobs:
             docker run -d --name blog_api -p 8000:8282 blogapp
 
             echo "CHECK VARS" $TEST_VAR "or" ${{env.TEST_VAR}}
+            echo "GIT" ${{ secrets.GITHUB_TOKEN }}
+            echo "CHECK GT" $TEST_GT "or" ${{env.TEST_GT}}
