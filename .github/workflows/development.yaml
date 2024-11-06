@@ -66,4 +66,5 @@ jobs:
       #   run: docker run -d --name blog_api -p 8000:8282 blogapp
       
       - name: Clean Filesystem
-        run: rm -rf ${{ secrets.FOLDER_PATH }}/
+        # run: rm -rf ${{ secrets.FOLDER_PATH }}/
+        run: echo ${{ secrets.FOLDER_PATH }}
