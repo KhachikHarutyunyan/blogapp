@@ -29,7 +29,7 @@ jobs:
     needs: build_and_test
     runs-on: self-hosted
     env:
-      TEST: ${{ secrets.runner_path.FOLDER_PATH }}
+      TEST: ${{ secrets.TEST_SECRET }}
       TEST_VAR: ${{ vars.RUNNER_PATH }}
       TEST_GT: ${{ secrets.GITHUB_TOKEN }}
     steps:
