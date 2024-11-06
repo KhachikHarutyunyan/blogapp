@@ -86,5 +86,7 @@ jobs:
           SUPER_SECRET: 456
           FOLDER_PATH: ${{ secrets.FOLDER_PATH }}
           RUNNER_PATH: ${{ vars.RUNNER_PATH }}
+          TEST_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "$SUPER_SECRET" "$FOLDER_PATH" "$RUNNER_PATH" "${{env.FOLDER_PATH}}" "${{env.RUNNER_PATH}}"
+          echo ${#TEST_GITHUB_TOKEN} "$TEST_GITHUB_TOKEN" "${{env.TEST_GITHUB_TOKEN}}"
