@@ -80,13 +80,10 @@ jobs:
       #   run: echo ">>> ${{ vars.FOLDER_PATH }}"
   test_env:
     runs-on: self-hosted
-    secrets: inherit
-    with:
-      environment: staging
     steps:
       - shell: bash
         env:
-          SUPER_SECRET: 456
+          SUPER_SECRET: /home/dev/actions-runner/_work/
           FOLDER_PATH: ${{ secrets.FOLDER_PATH }}
           RUNNER_PATH: ${{ vars.RUNNER_PATH }}
           TEST_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
