@@ -30,6 +30,7 @@ jobs:
     runs-on: self-hosted
     env:
       TEST: ${{ secrets.FOLDER_PATH }}
+      TEST_VAR: ${{ vars.RUNNER_PATH }}
     steps:
       - name: Build and Run
         run: |
@@ -63,4 +64,6 @@ jobs:
             docker build -t blogapp .
             echo "Start running container 'blog_api'"
             docker run -d --name blog_api -p 8000:8282 blogapp
+
+            echo "CHECK VARS" $TEST_VAR "or" ${{env.TEST_VAR}}
       
