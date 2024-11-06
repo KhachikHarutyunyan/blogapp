@@ -83,7 +83,7 @@ jobs:
     steps:
       - shell: bash
         env:
-          FOLDER_PATH: /home/dev/actions-runner/_work/
+          FOLDER_PATH: /home/dev/actions-runner/_work/blogapp
         run: |
           echo "$FOLDER_PATH" "$RUNNER_PATH" "${{env.FOLDER_PATH}}" "${{env.RUNNER_PATH}}"
           rm -rf $FOLDER_PATH
