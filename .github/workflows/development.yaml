@@ -78,9 +78,10 @@ jobs:
       # - name: Clean Filesystem
       #   # run: rm -rf ${{ secrets.FOLDER_PATH }}/
       #   run: echo ">>> ${{ vars.FOLDER_PATH }}"
+
     steps:
-    - shell: bash
-      env:
-        SUPER_SECRET: 456
-      run: |
-        echo "$SUPER_SECRET"
+      - shell: bash
+        env:
+          SUPER_SECRET: 456
+        run: |
+          echo "$SUPER_SECRET"
