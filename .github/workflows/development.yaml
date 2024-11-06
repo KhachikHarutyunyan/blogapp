@@ -35,5 +35,5 @@ jobs:
         run: docker run -d -p 8000:8282 blogapp
       
       - name: Clean Filesystem
-        run: rm -rf ${{secrets.BLOGAPP_PATH}}/blogapp/
+        run: rm -rf ${{secrets.BLOGAPP_PATH}}/blogapp
 
