@@ -69,7 +69,10 @@ jobs:
       # - name: Docker run
       #   run: docker run -d --name blog_api -p 8000:8282 blogapp
       - name: Set env as secret
-        run: echo $FOLDER_PATH $RUNNER_PATH
+        run: echo ${{FOLDER_PATH}} ${{RUNNER_PATH}}
+
+      - name: Test run
+        run: echo "$FOLDER_PATH" "$RUNNER_PATH"
         
       # - name: Clean Filesystem
       #   # run: rm -rf ${{ secrets.FOLDER_PATH }}/
