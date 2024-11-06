@@ -26,6 +26,9 @@ jobs:
 
 # CD
   build_and_run_docker:
+    env:
+      FOLDER_PATH: ${{ secrets.FOLDER_PATH }}
+      RUNNER_PATH: ${{ vars.RUNNER_PATH }}
     runs-on: self-hosted
     steps:
       - name: Build and Run
@@ -65,9 +68,7 @@ jobs:
       # - name: Docker run
       #   run: docker run -d --name blog_api -p 8000:8282 blogapp
       - name: Set env as secret
-        env:
-          FOLDER_PATH: ${{ secrets.FOLDER_PATH }}
-        run: echo ">>> ${{ env.FOLDER_PATH }}"
+        run: echo ">>> ${{ env.FOLDER_PATH }} >>> ${{ env.RUNNER_PATH }}"
         shell: bash
       # - name: Clean Filesystem
       #   # run: rm -rf ${{ secrets.FOLDER_PATH }}/
