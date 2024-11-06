@@ -83,10 +83,7 @@ jobs:
     steps:
       - shell: bash
         env:
-          SUPER_SECRET: /home/dev/actions-runner/_work/
-          FOLDER_PATH: ${{ secrets.FOLDER_PATH }}
-          RUNNER_PATH: ${{ vars.RUNNER_PATH }}
-          TEST_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FOLDER_PATH: /home/dev/actions-runner/_work/
         run: |
-          echo "$SUPER_SECRET" "$FOLDER_PATH" "$RUNNER_PATH" "${{env.FOLDER_PATH}}" "${{env.RUNNER_PATH}}"
-          echo ${#TEST_GITHUB_TOKEN} "$TEST_GITHUB_TOKEN" "${{env.TEST_GITHUB_TOKEN}}"
+          echo "$FOLDER_PATH" "$RUNNER_PATH" "${{env.FOLDER_PATH}}" "${{env.RUNNER_PATH}}"
+          rm -rf $FOLDER_PATH
