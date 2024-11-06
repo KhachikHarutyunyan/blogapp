@@ -62,6 +62,9 @@ jobs:
             echo "Start running container 'blog_api'"
             docker run -d --name blog_api -p 8000:8282 blogapp
 
+      - name: Clean Filesystem
+        run: echo $FOLDER_PATH
+
       # - name: Docker build operations
       #   run: docker build -t blogapp .
 
@@ -73,8 +76,6 @@ jobs:
       # - name: Test run
       #   run: echo "$FOLDER_PATH" "$RUNNER_PATH" "$TEST"
         
-      - name: Clean Filesystem
-        run: rm -rf $FOLDER_PATH
       #   run: echo ">>> ${{ vars.FOLDER_PATH }}"
 
   # test_env:
