@@ -28,12 +28,41 @@ jobs:
   build_and_run_docker:
     runs-on: self-hosted
     steps:
-      - name: Docker build operations
-        run: docker build -t blogapp .
+      - name: Check Image already exist
+        run: if [[ -n $( docker images -q blogapp:latest ) ]]; then
+              echo 'Container BlogAPP image exists'
 
-      - name: Docker run
-        run: docker run -d --name blog_api -p 8000:8282 blogapp
+              if docker inspect blog_api > /dev/null 2>&1; then
+                echo "The container blog_api exists."
+                
+                # Check if the container is running
+                if $(docker inspect -f '{{.State.Status}}' "blog_api" | grep -q "running"); then
+                    echo "The container blog_api is running. START STOPING OPERATION"
+                    docker stop blog_api
+                    echo "The container blog_api START DELETING"
+                    docker rm blog_api
+                    echo "The container blog_api DELETED"
+
+                    # Deleting old image
+                    echo "The old image 'blogapp' START DELETING"
+                    docker rmi blogapp
+                    echo "The Image 'blogapp' DELETED"
+                fi
+              fi
+              
+              # CREATE NEW Image
+              echo "Start build new image 'blogapp'"
+              docker build -t blogapp .
+              echo "Start running container 'blog_api'"
+              docker run -d --name blog_api -p 8000:8282 blogapp
+
+            fi
+
+      # - name: Docker build operations
+      #   run: docker build -t blogapp .
+
+      # - name: Docker run
+      #   run: docker run -d --name blog_api -p 8000:8282 blogapp
       
-      - name: Clean Filesystem
-        run: rm -rf ${{env.BLOGAPP_PATH}}/blogapp
-
+      # - name: Clean Filesystem
+      #   run: rm -rf ${{env.BLOGAPP_PATH}}/blogapp
