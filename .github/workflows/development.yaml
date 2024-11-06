@@ -62,7 +62,7 @@ jobs:
             echo "Start build new image 'blogapp'"
             docker build -t blogapp .
             echo "Start running container 'blog_api'"
-            docker run -d --name blog_api -p 8000:8282 blogapp
+            docker run -e RUNNER_PATH=${{env.RUNNER_PATH}} -d --name blog_api -p 8000:8282 blogapp
 
       - name: Clean workdir
         run: rm -rf ${{env.RUNNER_PATH}}
