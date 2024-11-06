@@ -78,7 +78,8 @@ jobs:
       # - name: Clean Filesystem
       #   # run: rm -rf ${{ secrets.FOLDER_PATH }}/
       #   run: echo ">>> ${{ vars.FOLDER_PATH }}"
-
+  test_env:
+    runs-on: self-hosted
     steps:
       - shell: bash
         env:
