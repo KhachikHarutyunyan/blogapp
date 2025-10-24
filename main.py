@@ -9,7 +9,7 @@ app = FastAPI(title="CI/CD Intro")
 @app.get("/")
 async def greating():
     env = (os.getenv("RUNNER_PATH"))
-    return {"detail": f"Hello from APP:::{env}"}
+    return {"detail": f"Hello from APP::: {env}"}
 
 @app.get("/health")
 async def health():
