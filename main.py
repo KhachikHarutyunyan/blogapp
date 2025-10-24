@@ -3,7 +3,7 @@ import os
 import uvicorn
 from fastapi import FastAPI
 
-app = FastAPI(title="CI/CD Intro")
+app = FastAPI(title="CI/CD Intro GIT_HUB")
 
 
 @app.get("/")
